@@ -64,7 +64,7 @@
             <th scope="col">Department</th>
             <th scope="col">Cgpa</th>
             <th scope="col">Course(s) Failed</th>
-            <th scope="col">Year</th>
+            <th scope="col">Academic Session</th>
             <th scope="col">Remark</th>
             <th scope="col">Comment</th>
 
