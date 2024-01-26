@@ -22,7 +22,6 @@ class ApplicantService
             [
                 'department_id' => Auth::guard('admin')->user()->department_id,
                 'remark' => 'Qualify for Admission',
-                'recommendation' => $data['criteria'],
                 'comment' => $data['comments'] ?? null,
             ]
         );
