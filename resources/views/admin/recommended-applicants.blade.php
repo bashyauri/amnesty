@@ -1,3 +1,6 @@
+@php
+    use App\Models\User;
+@endphp
 @extends('admin.layout.layout')
 @section('content')
     <div class="main-panel">
@@ -140,7 +143,7 @@
                                                             <td>{{ $applicant->surname }}</td>
                                                             <td>{{ $applicant->firstname }}</td>
                                                             <td>{{ $applicant->m_name }}</td>
-                                                            <td>{{ $applicant->p_number }}</td>
+                                                            <td>{{ User::find($applicant->account_id)->p_number }}</td>
                                                             <td>{{ $applicant->remark }}</td>
                                                             {{--                                                            Check if logged in as superadmin shortlist else drop --}}
                                                             @if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin'))

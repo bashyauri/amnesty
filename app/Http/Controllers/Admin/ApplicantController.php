@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ApplicationStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DropRecommendedApplicantRequest;
 use App\Http\Requests\Admin\RecommendApplicantRequest;
@@ -36,12 +37,12 @@ class ApplicantController extends Controller
     public function getRecommendedApplicants(): View
     {
         $recommendedApplicants = Application::where(['department_id' => Auth::guard('admin')
-            ->user()->department_id, 'remark' => 'Qualify for Admission'])->get();
+            ->user()->department_id, 'remark' => ApplicationStatus::RECOMMENDED])->get();
 
         // if logged as superadmin user
         if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin')) {
 
-            $recommendedApplicants = Application::where(['remark' => 'Qualify for Admission'])->get();
+            $recommendedApplicants = Application::where(['remark' =>  ApplicationStatus::RECOMMENDED])->get();
             return view('admin.shortlist-applicants', ['recommendedApplicants' => $recommendedApplicants, 'departments' => Department::get(['id', 'department_name'])]);
         }
         $courses = Course::where(['department_id' => Auth::guard('admin')->user()->department_id])?->get();
@@ -105,7 +106,9 @@ class ApplicantController extends Controller
     public function getShortlistedApplicants()
     {
         if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin')) {
-            $shortlistedApplicants = Application::with('department')->where(['remark' => 'shortlisted'])->orderBy('department_id')->get();
+            $shortlistedApplicants = Application::with('department')->where(
+                ['remark' => ApplicationStatus::SHORTLISTED]
+            )->orderBy('department_id')->get();
         } else {
             $shortlistedApplicants = Application::with('department')
                 ->where(['remark' => 'shortlisted', 'department_id' => Auth::guard('admin')->user()->department_id])
