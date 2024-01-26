@@ -147,7 +147,7 @@
                                                             <td>{{ $applicant->matric_no }}</td>
                                                             <td>{{ User::find($applicant->account_id)->p_number }}</td>
                                                             <td>{{ $applicant->remark }}</td>
-                                                                                                                      Check if logged in as superadmin shortlist else drop --}}
+                                                                                                                     {{-- Check if logged in as superadmin shortlist else drop --}}
                                                             @if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin'))
                                                                 <td>{{ $applicant->department?->department_name }}</td>
                                                                 <td><input type="checkbox" name="short-list"
