@@ -15,14 +15,7 @@ class Application extends Model
     {
         return $this->belongsTo(State::class, 'stateid');
     }
-    public function lga()
-    {
-        return $this->belongsTo(Lga::class, 'lgaid');
-    }
-    public function examGrades()
-    {
-        return $this->belongsToMany(ExamGrade::class);
-    }
+
 
     public function department()
     {
@@ -35,5 +28,9 @@ class Application extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'account_id');
+    }
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
     }
 }

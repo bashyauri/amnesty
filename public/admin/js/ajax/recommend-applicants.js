@@ -7,23 +7,13 @@ $(document).ready(function () {
             var $row = $(this).closest("tr");
 
             // Get the value of the criteria field
-            var criteriaValue = $row.find(".criteria").val();
+
             var messageContainer = $row.find(".message-container");
 
             // Perform client-side validation
-            if (criteriaValue === "") {
-                // Display error message for empty criteria field
-                messageContainer
-                    .text("criteria is required")
-                    .removeClass("error")
-                    .addClass("danger text-danger");
-
-                return; // Stop further execution
-            }
 
             // Get the values of the form elements in the row.
             var data = {
-                criteria: criteriaValue,
                 comments: $row.find(".comments").val(),
                 accountId: $row.find(".recommend-checkbox").val(),
                 recommend: 1, // Set to 1 when checked
@@ -51,6 +41,7 @@ $(document).ready(function () {
                 error: function (error) {
                     // If the request failed, show an error message.
                     alert(error);
+                    console.log(error);
 
                     messageContainer
                         .text("error")

@@ -1,3 +1,6 @@
+@php
+    use App\Models\User;
+@endphp
 @extends('admin.layout.layout')
 @section('content')
     <div class="main-panel">
@@ -175,13 +178,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Full Name</th>
+                                                        <th>Matric No</th>
                                                         <th>Phone number</th>
-                                                        <th>State</th>
-                                                        <th>LGA</th>
-                                                        <th>Jamb No</th>
-                                                        <th>Score</th>
-                                                        <th>SSCE Details</th> <!-- New column for SSCE Details -->
-                                                        <th>Select Criteria</th> <!-- New column for Select Criteria -->
+                                                        <th>Programme</th>
+                                                        <th>Department</th>
+                                                        <th>Courses Failed</th>
+                                                        <th>Cgpa</th>
+                                                        <th>Academic Session</th>
                                                         <th>Comments</th> <!-- New column for Comments -->
                                                         <th>Recommend</th> <!-- New column for Recommend -->
                                                         <th><th>
@@ -192,42 +195,14 @@
                                                     @foreach ($applicants as $application)
                                                         <tr>
                                                             <td>{{ $application->surname.' '.$application->firstname.' '.$application->m_name}}</td>
-                                                            <td>{{ $application->p_number }}</td>
-                                                            <td>{{ $application->name }}</td>
-                                                            <td>{{ $application->lga }}</td>
-                                                            <td>{{ $application->jambno }}</td>
-                                                            <td>{{ $application->score }}</td>
-                                                            <td>
-                                                                <!-- SSCE Details -->
+                                                            <td>{{ strtoupper($application->matric_no)}}</td>
+                                                            <td>{{ User::find($application->account_id)->p_number }}</td>
+                                                            <td>{{$application->program->name}}</td>
+                                                            <td>{{ $application->department->name}}</td>
+                                                            <td>{{ $application->no_of_course}}</td>
+                                                            <td>{{ $application->cgpa}}</td>
+                                                            <td>{{ $application->year_failed_exam}}</td>
 
-                                                                    @php
-                                                                        $grades = $application->exam_grades->chunk(2);
-                                                                    @endphp
-                                                                    @foreach ($grades as $gradeRow)
-
-                                                                            @foreach ($gradeRow as $exam_grade)
-
-                                                                                    <p class="mb-2">
-                                                                                        {{ $exam_grade->exam_name . '->' . Str::substr($exam_grade->subject_name, 0, 3) . ' ' . $exam_grade->grade }}
-                                                                                    </p>
-
-                                                                            @endforeach
-
-                                                                    @endforeach
-
-                                                            </td>
-                                                            <td>
-                                                                <!-- Select Criteria -->
-
-
-                                                                    <select name="criteria" class="criteria" required>
-                                                                        <option value="">choose</option>
-                                                                        <option value="Merit">Merit</option>
-                                                                        <option value="ELDS">ELDS</option>
-                                                                        <option value="Catchment area">Catchment area</option>
-                                                                    </select>
-
-                                                            </td>
                                                             <td>
                                                                 <!-- Comments -->
 

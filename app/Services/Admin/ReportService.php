@@ -26,7 +26,7 @@ class ReportService
         if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin')) {
             return Application::all()->count();
         }
-        return ProposedCourse::where(['department_id' => Auth::guard('admin')->user()->department_id])->count();
+        return Application::where(['department_id' => Auth::guard('admin')->user()->department_id])->count();
     }
     public function numberOfRecommendedApplicants()
     {
