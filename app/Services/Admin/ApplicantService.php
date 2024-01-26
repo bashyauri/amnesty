@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Enums\ApplicationStatus;
 use App\Models\User;
 use App\Models\Programme;
 use App\Models\Application;
@@ -21,7 +22,7 @@ class ApplicantService
         return  Application::where(['account_id' => $data['accountId']])->update(
             [
                 'department_id' => Auth::guard('admin')->user()->department_id,
-                'remark' => 'Qualify for Admission',
+                'remark' => ApplicationStatus::RECOMMENDED,
                 'comment' => $data['comments'] ?? null,
             ]
         );
@@ -30,7 +31,6 @@ class ApplicantService
     {
         return Application::where('account_id', $accountId)
             ->update([
-                'department_id' => 0,
                 'remark' => null,
                 'recommendation' => null,
                 'comment' => null,
@@ -42,12 +42,12 @@ class ApplicantService
 
         return
             DB::transaction(function () use ($accountId, $user) {
-                // Application::where('account_id', $accountId)
-                //     ->update([
+                Application::where('account_id', $accountId)
+                    ->update([
 
-                //         'remark' => 'shortlisted',
-                //     ]);
-                // $this->sendMessage($user);
+                        'remark' => ApplicationStatus::SHORTLISTED,
+                    ]);
+                $this->sendMessage($user);
                 $user->notify(new ShortlistedCandidateNotification());
             });
     }
