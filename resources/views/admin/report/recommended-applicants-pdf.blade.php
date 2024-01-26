@@ -9,10 +9,12 @@
             width: 100%;
         }
 
+
         #customers td,
         #customers th {
             border: 1px solid #ddd;
             padding: 1px;
+            font-size: 10px;
         }
 
         #customers tr:nth-child(even) {
@@ -49,7 +51,7 @@
 
 
 
-    <h4 align="center"> Recommended List for {{ $department->department_name }}
+    <h4 align="center"> Recommended List for {{ $department->name }}
         {{ config('services.admission.academic_session') }}
     </h4>
 
@@ -57,17 +59,15 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Full Name</th>
-            <th scope="col">Jamb Details</th>
-            <th scope="col">SSCE Details</th>
-            <th scope="col">State</th>
-            <th scope="col">LGA</th>
-            @if ($course->count() > 1)
-                <th scope="col">Course</th>
-            @endif
-
-
-            <th scope="col">Criteria</th>
+            <th scope="col">Matric Number</th>
+            <th scope="col">Programme</th>
+            <th scope="col">Department</th>
+            <th scope="col">Cgpa</th>
+            <th scope="col">Course(s) Failed</th>
+            <th scope="col">Year</th>
             <th scope="col">Remark</th>
+            <th scope="col">Comment</th>
+
 
         </tr>
         <tbody>
@@ -77,29 +77,16 @@
                     <td style="width: 3%">{{ $index + 1 }}</td>
                     <td style="width: 10%">
                         {{ $applicant->surname . ' ' . $applicant->firstname . ' ' . $applicant->m_name }}</td>
-                    <td>{{ $applicant->jambno . '->' . $applicant->score }}</td>
-
-                    <td style="width: 30%">
-
-
-                        @foreach ($applicant->exam_grades->chunk(2) as $subjectRow)
-                            @foreach ($subjectRow as $index => $exam_grade)
-                                {{ substr($exam_grade->subject_name, 0, 3) . '->' . $exam_grade->grade . '; ' }}
-                            @endforeach
-                        @endforeach
-                    </td>
-                    <td style="width: 10%">
-                        {{ $applicant->name }}
-                    </td>
-                    <td>
-                        {{ $applicant->lga }}
-                    </td>
-                    @if ($course->count() > 1)
-                        <td>{{ $applicant->course_name }}</td>
-                    @endif
-
-                    <td style="width: 10%">{{ $applicant->recommendation }}</td>
+                   <td style="width: 10%">{{ strtoupper($applicant->matric_no)}}</td>
+                   <td>{{$applicant->program->name}}</td>
+                   <td>{{$applicant->department->name}}</td>
+                   <td style="width: 5%">{{$applicant->cgpa}}</td>
+                   <td style="width: 3%">{{$applicant->no_of_course}}</td>
+                   <td>{{$applicant->year_failed_exam}}</td>
+                        <td style="width: 10%">{{ $applicant->remark }}</td>
                     <td style="width: 10%">{{ $applicant->comment }}</td>
+
+
 
 
                 </tr>

@@ -123,6 +123,7 @@
                                                         <th>Surname</th>
                                                         <th>First Name</th>
                                                         <th>Middle Name</th>
+                                                        <th>Matric no</th>
                                                         <th>Phone number</th>
                                                         <th>Remark</th>
                                                         @if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin'))
@@ -143,6 +144,7 @@
                                                             <td>{{ $applicant->surname }}</td>
                                                             <td>{{ $applicant->firstname }}</td>
                                                             <td>{{ $applicant->m_name }}</td>
+                                                            <td>{{ $applicant->matric_no }}</td>
                                                             <td>{{ User::find($applicant->account_id)->p_number }}</td>
                                                             <td>{{ $applicant->remark }}</td>
                                                             {{--                                                            Check if logged in as superadmin shortlist else drop --}}

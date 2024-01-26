@@ -16,4 +16,8 @@ class Admin extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'admin_role');
     }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }
