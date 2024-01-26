@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+@php
+    use App\Models\User;
+@endphp
 <html lang="en">
 
 <head>
@@ -90,14 +93,14 @@
                                             @forelse ($recommendedApplicants as $index => $applicant)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $applicant->surname }}</td>
-                                                    <td>{{ $applicant->firstname }}</td>
-                                                    <td>{{ $applicant->m_name }}</td>
-                                                    <td>{{ $applicant->p_number }}</td>
-                                                    <td>{{ $applicant->remark }}</td>
+                                                    <td>{{ User::find($applicant->account_id)->surname }}</td>
+                                                    <td>{{ User::find($applicant->account_id)->firstname }}</td>
+                                                    <td>{{User::find($applicant->account_id)->m_name }}</td>
+                                                    <td>{{ User::find($applicant->account_id)->p_number }}</td>
+                                                    <td>{{ User::find($applicant->account_id)->remark }}</td>
                                                     {{--                                                            Check if logged in as superadmin shortlist else drop --}}
                                                     @if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin'))
-                                                        <td>{{ $applicant->department?->department_name }}</td>
+                                                        <td>{{ $applicant->department?->name }}</td>
                                                         <td><input type="checkbox" name="short-list"
                                                                 class="shortlist-checkbox"
                                                                 value="{{ $applicant->account_id }}">

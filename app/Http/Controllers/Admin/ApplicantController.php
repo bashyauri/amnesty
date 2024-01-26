@@ -43,7 +43,8 @@ class ApplicantController extends Controller
         if (Auth::guard('admin')->user()->roles->contains('name', 'superadmin')) {
 
             $recommendedApplicants = Application::where(['remark' =>  ApplicationStatus::RECOMMENDED])->get();
-            return view('admin.shortlist-applicants', ['recommendedApplicants' => $recommendedApplicants, 'departments' => Department::get(['id', 'department_name'])]);
+
+            return view('admin.shortlist-applicants', ['recommendedApplicants' => $recommendedApplicants, 'departments' => Department::get(['id', 'name'])]);
         }
         $courses = Course::where(['department_id' => Auth::guard('admin')->user()->department_id])?->get();
         return view('admin.recommended-applicants', ['recommendedApplicants' => $recommendedApplicants, 'courses' => $courses]);
@@ -74,7 +75,7 @@ class ApplicantController extends Controller
     {
 
         try {
-            $data['recommendedApplicants'] = Application::with('department')->where(['department_id' => $request->departmentId, 'remark' => 'Qualify for Admission'])->get();
+            $data['recommendedApplicants'] = Application::with('department')->where(['department_id' => $request->departmentId, 'remark' => ApplicationStatus::RECOMMENDED])->get();
 
 
             return  view('admin.recommended-department-applicants')->with($data);
