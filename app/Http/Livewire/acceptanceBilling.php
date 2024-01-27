@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\TransactionStatus;
 use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -29,15 +29,15 @@ class acceptanceBilling extends Component
 
         $this->student = Auth::user();
         $this->useStatus = '(Not Used)';
-        $this->resource = 'Acceptance Fees';
+        $this->resource = config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION');
         $this->date = DATE("d/m/Y");
         $this->transactionId = strtoupper($transcId);
-        $this->status = '00';
-        $this->amount = 9000;
+        $this->status = TransactionStatus::APPROVED;
+        $this->amount = config('Remita.AMNESTY_ACCEPTANCE_FEES');
         $this->session = ' 2023/2024';
         $this->results = Transaction::where([
             'account_id' => $this->student->account_id,
-            'resource' => 'Acceptance Fees',
+            'resource' => config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION'),
             'use_status' => '(Not Used)'
         ])->first();
         // $results = Transaction::where()->
