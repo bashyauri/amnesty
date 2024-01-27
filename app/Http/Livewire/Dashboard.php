@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\ApplicationStatus;
 use App\Enums\TransactionStatus;
 use App\Models\Application;
 use App\Models\Transaction;
@@ -31,14 +32,14 @@ class Dashboard extends Component
                     ->orWhere('status', TransactionStatus::APPROVED);
             })->first();
         $this->offer = Transaction::where('account_id', '=', $this->student->account_id)
-            ->where('resource', '=', config('Remita.ACCEPTANCE_FEES'))
+            ->where('resource', '=', config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION'))
             ->where('use_status', '=', '(Not Used)')
             ->where(function ($query) {
                 $query->where('status', TransactionStatus::ACTIVATED)
                     ->orWhere('status', TransactionStatus::APPROVED);
             })->first();
         $this->isShortListed = Application::where('account_id', '=', $this->student->account_id)
-            ->where('remark', '=', 'shortlisted')
+            ->where('remark', '=', ApplicationStatus::SHORTLISTED)
             ->first();
 
         // dd($this->student->account_id);
