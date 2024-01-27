@@ -42,7 +42,7 @@ class ShortlistedCandidateNotification extends Notification implements shouldQue
      */
     public function toMail($notifiable)
     {
-        $url = "https://screening-2023-2024.wufpbk.edu.ng/";
+        $url = "https://student-amnesty.wufpbk.edu.ng/";
 
         return (new MailMessage)
             ->from('info@wufpbk.edu.ng', 'WUFPBK')
@@ -50,8 +50,8 @@ class ShortlistedCandidateNotification extends Notification implements shouldQue
             ->markdown('emails.shortlisted-candidate', [
                 'candidateName' => $notifiable->surname . ' ' . $notifiable->firstname . ' ' . $notifiable->m_name,
                 'url' => $url,
-                'programme_name' => $notifiable->programme->name,
-                'department_name' => $notifiable->application->department->department_name,
+                'programme_name' => $notifiable->application->program->name,
+                'department_name' => $notifiable->application->department->name,
 
 
             ]);
