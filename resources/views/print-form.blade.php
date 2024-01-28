@@ -156,7 +156,8 @@
 
         <div id="project">
 
-            <div><span>Full Name</span> {{ $fullName }}</div>
+            <div><span>Full Name</span> {{ auth()->user()->fullName }}
+            </div>
             <div><span>PHONE</span> {{ auth()->user()->p_number }}</div>
             <div><span>EMAIL</span> {{ auth()->user()->email }}</div>
 

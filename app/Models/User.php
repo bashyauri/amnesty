@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Application::class, 'account_id');
     }
+    public function getFullNameAttribute()
+    {
+        return $this->surname . ' ' . $this->firstname . ' ' . $this->m_name;
+    }
 }
