@@ -143,7 +143,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SCHOOL FEES RECEIPT</title>
+    <title>AMNESTY RECEIPT</title>
     <link rel="stylesheet" href="style.css" media="all" />
 </head>
 
@@ -201,5 +201,7 @@
     </footer>
 </body>
 
-
+<script>
+    window.print();
+</script>
 </html>

@@ -227,10 +227,11 @@
                                     <div class="form-group">
                                         <label for="gender">Gender:</label>
                                         <select wire:model="gender" class="form-control form-select" list="gender">
-
                                             <option value="" selected>Select</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
+                                            <option value="male"  @if ($gender === $applications->gender)
+                                                selected @endif>Male</option>
+                                            <option value="female" @if ($gender === $applications->gender)
+                                                selected @endif>Female</option>
                                         </select>
                                         @error('gender')
                                             <div class="text-danger">{{ $message }}</div>
@@ -244,12 +245,18 @@
 
                                         <select wire:model="year_failed_exam" class="form-control form-select">
 
+
                                             <option value="" selected>Select</option>
-                                            <option value="2018/2019">2018/2019</option>
-                                            <option value="2019/2020">2019/2020</option>
-                                            <option value="2020/2021">2020/2021</option>
-                                            <option value="2021/2022">2021/2022</option>
-                                            <option value="2022/2023">2022/2023</option>
+                                            <option value="2018/2019"  @if ($year_failed_exam === $applications->year_failed_exam)
+                                                selected @endif>2018/2019</option>
+                                            <option value="2019/2020"  @if ($year_failed_exam === $applications->year_failed_exam)
+                                                selected @endif>2019/2020</option>
+                                            <option value="2020/2021"  @if ($year_failed_exam === $applications->year_failed_exam)
+                                                selected @endif>2020/2021</option>
+                                            <option value="2021/2022"  @if ($year_failed_exam === $applications->year_failed_exam)
+                                                selected @endif>2021/2022</option>
+                                            <option value="2022/2023"  @if ($year_failed_exam === $applications->year_failed_exam)
+                                                selected @endif>2022/2023</option>
                                         </select>
 
 
@@ -292,9 +299,13 @@
                                     <div class="form-group">
                                         <label for="state">Program:</label>
                                         <select wire:model.lazy="selectedProgram" class="form-control">
+
                                             <option value="">Select a program</option>
                                             @foreach ($programs as $program)
-                                                <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                            <option value="{{ $program->id }}"
+                                                @if ($selectedProgram === $program->id) selected @endif>
+                                            {{ $program->name }}
+                                        </option>
                                             @endforeach
                                         </select>
                                         @error('selectedProgram')
@@ -305,22 +316,28 @@
                                     </div>
                                 </div>
 
-
-<div class="col-md-4 col-sm-4">
-    <div class="form-group">
-        <label for="lga">Department:</label>
-        <select wire:model.lazy="selectedDepartment" class="form-control">
-            <option value="">Select a department</option>
-            @foreach ($availableDepartments as $department)
-                <option value="{{ $department->id }}">{{ $department->name }}</option>
-            @endforeach
-        </select>
-        @error('selectedDepartment')
-        <div class="text-danger">{{ $message }}
-        </div>
-    @enderror
-    </div>
-</div>
+                                @if (!is_null($selectedProgram) || $applications?->department->name)
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="selectedDepartment">Department:</label>
+                                        <select wire:model="selectedDepartment" class="form-control">
+                                            @isset($applications->department->name)
+                                                <option value="{{ $applications->department->name }}" selected>
+                                                    {{ $applications->department->name }}</option>
+                                            @endisset
+                                            <option value="" selected>Choose Department</option>
+                                            @foreach ($availableDepartments as $department)
+                                                <option value="{{ $department->id }}">{{ $department->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('selectedDepartment')
+                                        <div class="text-danger">{{ $message }}
+                                        </div>
+                                    @enderror
+                                    </div>
+                                </div>
+                                @endif
 
 
                             </div>
