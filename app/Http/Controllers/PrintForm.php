@@ -59,72 +59,46 @@ class PrintForm extends Controller
             return Redirect('profile');
         }
     }
-    // public function printOffer()
-    // {
-    //     //Bio Section
+    public function printOffer()
+    {
+        //Bio Section
 
-    //     $user = auth()->user()->account_id;
+        $user = auth()->user()->account_id;
 
 
-    //     $applicationDetails = Application::where('account_id', '=', $user)->sole();
-    //     $lga = Lga::where('id', '=', $applicationDetails->lgaid)->first();
-    //     $state = State::where('id', '=', $applicationDetails->stateid)->first();
-    //     $program = Programme::where('id', '=', auth()->user()->programme_id)->first();
+        $applicationDetails = Application::where('account_id', '=', $user)->sole();
 
+        $program = Programme::where('id', '=', auth()->user()->programme_id)->first();
 
 
 
 
-    //     $institutions = Institution::where('account_id', '=', $user)->get();
-    //     $exams = ExamDetail::where('account_id', '=', $user)->get();
-    //     $subjects = ExamGrade::where('account_id', '=', $user)->get();
-    //     $transaction = Transaction::where('account_id', '=', $user)
-    //         ->where('resource', '=', config('Remita.AMNESTY_DESCRIPTION'))
-    //         ->where('use_status', '=', '(Not Used)')
-    //         ->where(function ($query) {
-    //             $query->where('status', TransactionStatus::ACTIVATED)
-    //                 ->orWhere('status', TransactionStatus::APPROVED);
-    //         })->first();
+
+        $institutions = Institution::where('account_id', '=', $user)->get();
+        $exams = ExamDetail::where('account_id', '=', $user)->get();
+        $subjects = ExamGrade::where('account_id', '=', $user)->get();
+        $transaction = Transaction::where('account_id', '=', $user)
+            ->where('resource', '=', config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION'))
+            ->where('use_status', '=', '(Not Used)')
+            ->where(function ($query) {
+                $query->where('status', TransactionStatus::ACTIVATED)
+                    ->orWhere('status', TransactionStatus::APPROVED);
+            })->first();
 
 
-    //         $data = array(
-    //             'programme' => ucwords($program->name),
-    //             'fullName' => $applicationDetails->surname . ' ' . $applicationDetails->firstname . ' ' . $applicationDetails->m_name,
-    //             'serialNo' => $applicationDetails->sN,
-    //             'rrr' => $transaction->RRR,
-    //             'accountId' => $applicationDetails->account_id,
-    //             'passport' => $applicationDetails->filename,
-    //             'dob' => $applicationDetails->d_birth,
-    //             'gender' => ucwords($applicationDetails->gender),
-    //             'homeTown' => $applicationDetails->home_town,
-    //             'lga' => $lga->name,
-    //             'state' => $state->name,
-    //             'nationality' => $applicationDetails->nationality,
-    //             'maritalStatus' => ucwords($applicationDetails->marital_status),
-    //             'phoneNumber' => ucwords($applicationDetails->p_number),
-    //             'homeAddress' => ucwords($applicationDetails->home_address),
-    //             'correspondentAddress' => ucwords($applicationDetails->cor_address),
-    //             'sponsor' => ucwords($applicationDetails->sponsor),
-    //             'nextkinName' => ucwords($applicationDetails->nextkin_name),
-    //             'nextkinGsm' => ucwords($applicationDetails->nextkin_gsm),
-    //             'nextkinAddress' => ucwords($applicationDetails->nextkin_address),
-    //             'institutions' => $institutions,
-    //             'count' => 0,
-    //             'exams' => $exams,
-    //             'subjects' => $subjects,
-    //             'subjectCount' => 0,
-
-    //             'scheduleFees' =>  SchoolFees::department($departments->id),
+        $data = array(
+            'fullName' => $applicationDetails->surname . ' ' . $applicationDetails->firstname . ' ' . $applicationDetails->m_name,
+            'serialNo' => $applicationDetails->sN,
+            'rrr' => $transaction->RRR,
+            'transactionId' => $transaction->transactionId,
+            'resource' => $transaction->resource,
+            'amount' => $transaction->amount,
+            'accountId' => $applicationDetails->account_id,
+        );
 
 
-    //         );
-
-
-    //         return view('offer')->with($data);
-    //     }
-
-    //     return redirect('dashboard')->with('status', 'It appears you made some corrections and forget to submit. Please submit your form and try again.');
-    // }
+        return view('offer')->with($data);
+    }
     // //
 
 }

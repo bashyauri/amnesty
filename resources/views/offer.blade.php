@@ -1,672 +1,208 @@
 <style>
-    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-    /* Document
-   ========================================================================== */
-
-    /**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
-
-    html {
-        line-height: 1.15;
-        /* 1 */
-        -webkit-text-size-adjust: 100%;
-        /* 2 */
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
     }
-
-    /* Sections
-   ========================================================================== */
-
-    /**
- * Remove the margin in all browsers.
- */
-
-    body {
-        margin: 0;
-    }
-
-    /**
- * Render the `main` element consistently in IE.
- */
-
-    main {
-        display: block;
-    }
-
-    /**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-
-    h1 {
-        font-size: 1.5em;
-        margin: 0.67em 0;
-    }
-
-    /* Grouping content
-   ========================================================================== */
-
-    /**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-
-    hr {
-        box-sizing: content-box;
-        /* 1 */
-        height: 0;
-        /* 1 */
-        overflow: visible;
-        /* 2 */
-    }
-
-    /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-    pre {
-        font-family: monospace, monospace;
-        /* 1 */
-        font-size: 1em;
-        /* 2 */
-    }
-
-    /* Text-level semantics
-   ========================================================================== */
-
-    /**
- * Remove the gray background on active links in IE 10.
- */
 
     a {
-        background-color: transparent;
-    }
-
-    /**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-
-    abbr[title] {
-        border-bottom: none;
-        /* 1 */
+        color: #5D6975;
         text-decoration: underline;
-        /* 2 */
-        text-decoration: underline dotted;
-        /* 2 */
-    }
-
-    /**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-
-    b,
-    strong {
-        font-weight: bolder;
-    }
-
-    /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-    code,
-    kbd,
-    samp {
-        font-family: monospace, monospace;
-        /* 1 */
-        font-size: 1em;
-        /* 2 */
-    }
-
-    /**
- * Add the correct font size in all browsers.
- */
-
-    small {
-        font-size: 80%;
-    }
-
-    /**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
-    sub,
-    sup {
-        font-size: 75%;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-    }
-
-    sub {
-        bottom: -0.25em;
-    }
-
-    sup {
-        top: -0.5em;
-    }
-
-    /* Embedded content
-   ========================================================================== */
-
-    /**
- * Remove the border on images inside links in IE 10.
- */
-
-    img {
-        border-style: none;
-    }
-
-    /* Forms
-   ========================================================================== */
-
-    /**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        font-family: inherit;
-        /* 1 */
-        font-size: 100%;
-        /* 1 */
-        line-height: 1.15;
-        /* 1 */
-        margin: 0;
-        /* 2 */
-    }
-
-    /**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-
-    button,
-    input {
-        /* 1 */
-        overflow: visible;
-    }
-
-    /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-
-    button,
-    select {
-        /* 1 */
-        text-transform: none;
-    }
-
-    /**
- * Correct the inability to style clickable types in iOS and Safari.
- */
-
-    button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"] {
-        -webkit-appearance: button;
-    }
-
-    /**
- * Remove the inner border and padding in Firefox.
- */
-
-    button::-moz-focus-inner,
-    [type="button"]::-moz-focus-inner,
-    [type="reset"]::-moz-focus-inner,
-    [type="submit"]::-moz-focus-inner {
-        border-style: none;
-        padding: 0;
-    }
-
-    /**
- * Restore the focus styles unset by the previous rule.
- */
-
-    button:-moz-focusring,
-    [type="button"]:-moz-focusring,
-    [type="reset"]:-moz-focusring,
-    [type="submit"]:-moz-focusring {
-        outline: 1px dotted ButtonText;
-    }
-
-    /**
- * Correct the padding in Firefox.
- */
-
-    fieldset {
-        padding: 0.35em 0.75em 0.625em;
-    }
-
-    /**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-
-    legend {
-        box-sizing: border-box;
-        /* 1 */
-        color: inherit;
-        /* 2 */
-        display: table;
-        /* 1 */
-        max-width: 100%;
-        /* 1 */
-        padding: 0;
-        /* 3 */
-        white-space: normal;
-        /* 1 */
-    }
-
-    /**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-
-    progress {
-        vertical-align: baseline;
-    }
-
-    /**
- * Remove the default vertical scrollbar in IE 10+.
- */
-
-    textarea {
-        overflow: auto;
-    }
-
-    /**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-
-    [type="checkbox"],
-    [type="radio"] {
-        box-sizing: border-box;
-        /* 1 */
-        padding: 0;
-        /* 2 */
-    }
-
-    /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-
-    [type="number"]::-webkit-inner-spin-button,
-    [type="number"]::-webkit-outer-spin-button {
-        height: auto;
-    }
-
-    /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-
-    [type="search"] {
-        -webkit-appearance: textfield;
-        /* 1 */
-        outline-offset: -2px;
-        /* 2 */
-    }
-
-    /**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-    [type="search"]::-webkit-search-decoration {
-        -webkit-appearance: none;
-    }
-
-    /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-    ::-webkit-file-upload-button {
-        -webkit-appearance: button;
-        /* 1 */
-        font: inherit;
-        /* 2 */
-    }
-
-    /* Interactive
-   ========================================================================== */
-
-    /*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-
-    details {
-        display: block;
-    }
-
-    /*
- * Add the correct display in all browsers.
- */
-
-    summary {
-        display: list-item;
-    }
-
-    /* Misc
-   ========================================================================== */
-
-    /**
- * Add the correct display in IE 10+.
- */
-
-    template {
-        display: none;
-    }
-
-    /**
- * Add the correct display in IE 10.
- */
-
-    [hidden] {
-        display: none;
-    }
-
-    * {
-        box-sizing: border-box;
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-            "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        position: relative;
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0 auto;
+        color: #001028;
+        background: #FFFFFF;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-family: Arial;
     }
 
-    header h5 {
+    header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+    }
+
+    #logo {
         text-align: center;
+        margin-bottom: 10px;
     }
 
-    article {
-        width: 85%;
-        margin: 10px auto;
-        line-height: 1.5rem;
+    #logo img {
+        width: 90px;
     }
 
-    article span {
-        font-weight: bold;
-    }
-
-    ol ol {
-        line-height: 1.5rem;
-    }
-
-    footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-
-    .offer {
-        width: 100%;
-        margin: 40px auto;
-    }
-
-    .logo-div {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    h1 {
+        border-top: 1px solid #5D6975;
+        border-bottom: 1px solid #5D6975;
+        color: #5D6975;
+        font-size: 2.4em;
+        line-height: 1.4em;
+        font-weight: normal;
         text-align: center;
+        margin: 0 0 20px 0;
+        background: url(dimension.png);
     }
 
-    .logo-div h2 {
-        color: #116530;
+    #project {
+        float: left;
     }
 
-    .logo-img {
-        /* margin-right: 5rem; */
-        margin-left: 5rem;
+    #project span {
+        color: #5D6975;
+        text-align: right;
+        width: 52px;
+        margin-right: 10px;
+        display: inline-block;
+        font-size: 0.8em;
     }
 
-    .address-div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 85%;
-        margin: 5px auto;
+    #company {
+        float: right;
+        text-align: right;
     }
 
-    .date-div {
-        height: 100%;
-    }
-
-    .date-div p:first-child {
-        margin-bottom: 5rem;
-    }
-
-    .inner-list {
-        list-style-type: lower-alpha;
-    }
-
-    .stamp-div {
-        display: flex;
-        flex-direction: column;
-        /* align-content: space-between; */
-        justify-content: center;
-        text-align: center;
-    }
-
-    .stamp-div div {
-        border: 3px solid black;
-        height: 40px;
-        width: 17rem;
-    }
-
-    .sign-div {
-        display: flex;
-        flex-direction: column;
-        /* align-content: space-between; */
-        justify-content: center;
-        text-align: center;
-    }
-
-    .sign-div div {
-        border: 1px solid black;
-        height: 1px;
-        width: 17rem;
-    }
-
-    @page {
-        size: A3;
-    }
-
-    html {
-        width: 8.5in;
-        height: 11in;
-    }
-
-    @media print {
-        @page {
-            size: A4;
-        }
-
-        body {
-            width: 8.5in;
-            height: 12in;
-        }
+    #project div,
+    #company div {
+        white-space: nowrap;
     }
 
     table {
-        border-collapse: collapse;
         width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
     }
 
-    th,
-    td {
-        padding: 8px;
+    table tr:nth-child(2n-1) td {
+        background: #F5F5F5;
+    }
+
+    table th,
+    table td {
+        text-align: center;
+    }
+
+    table th {
+        padding: 5px 20px;
+        color: #5D6975;
+        border-bottom: 1px solid #C1CED9;
+        white-space: nowrap;
+        font-weight: normal;
+    }
+
+    table .service,
+    table .desc {
         text-align: left;
-        border: 1px solid #dddddd;
     }
 
-    th {
-        background-color: #f2f2f2;
+    table td {
+        padding: 20px;
+        text-align: right;
     }
 
-    .fees-header {
-        page-break-after: always;
+    table td.service,
+    table td.desc {
+        vertical-align: top;
     }
+
+    table td.unit,
+    table td.qty,
+    table td.total {
+        font-size: 1.2em;
+    }
+
+    table td.grand {
+        border-top: 1px solid #5D6975;
+        ;
+    }
+
+    #notices .notice {
+        color: #5D6975;
+        font-size: 1.2em;
+    }
+
+    footer {
+        color: #5D6975;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #C1CED9;
+        padding: 8px 0;
+        text-align: center;
+    }
+
 </style>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    {{-- <link rel="stylesheet" href="{{ public_path('css/print.css') }}" media="print"> --}}
-
-    <title>provisional offer</title>
+    <meta charset="utf-8">
+    <title>AMNESTY RECEIPT</title>
+    <link rel="stylesheet" href="style.css" media="all" />
 </head>
 
 <body>
-    <div class="offer">
-        <div class="logo-div">
-            <div class="logo-img"><img src="{{ asset('assets/img/logos/logo.jpg') }}" alt="logo-image" height="100px" />
-            </div>
-            <div class="logo-text">
-                <h2 class="">WAZIRI UMARU FEDERAL POLYTECHNIC </h2>
-                <h6>OFFICE OF THE REGISTRAR</h6>
-                <h6>(ACADEMIC AFFAIRS DIVISION)</h6>
-                <h6>BIRNIN KEBBI</h6>
-            </div>
-            <div class="logo-img"> {!! QrCode::size(100)->generate($fullName . ' Remita:' . $rrr) !!}</div>
+    <header class="clearfix">
+        <div id="logo">
+            <img src="../assets/img/logos/logo.jpg">
         </div>
-        <div class="address-div">
-            <div class="to-div">
+        <h1>{{config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION')}}</h1>
 
-                To: <strong>.......{{ strtoupper($fullName) }}.....</strong>
+        <div id="project">
 
+            <div><span>Full Name</span> {{ auth()->user()->fullName }}
             </div>
-            <div class="date-div">
-                Date:<strong>.......{{ date('d/m/Y') }}.....</strong>
+            <div><span>PHONE</span> {{ auth()->user()->p_number }}</div>
+            <div><span>EMAIL</span> {{ auth()->user()->email }}</div>
 
-            </div>
         </div>
-        <section>
-            <header>
-                <h5>PROVISIONAL OFFER OF ADMISSION {{ config('services.admission.academic_session') }} ACADEMIC
-                    SESSION</h5>
-            </header>
-            <article>
-                This is to inform you that you have being offered provisional offer admission into the<br>
-                Waziri Umaru Federal Polytechnic Birnin Kebbi, Kebbi State to pursue the following:-
-                <p><span>Course:</span> {{ $course }}
-                </p>
-
-                <p><span>Department: </span>{{ $department }}
-                </p>
-                <p><span>Programme:</span> {{ $programme }}
-                </p>
-                <p><span>Duration:</span> {{ auth()->user()->programme_id == 1 ? 2 : 3 }}
-                    years
-                </p>
-                <ol>
-                    <li>
-                        Please note that the confirmation of this offer is subject to the following conditions
-                        <ol class="inner-list">
-                            <li>Provision of the minimum entry requiremnet prescribed for the course.</li>
-                            <li>Presentation during registration of the original(s) or the certificate(s) or any other
-                                evidence
-                                of the qualification on which the offer has been based.
-                            </li>
-                            <li>Evidence of physical and mental fitness from a recognized medical practitioner</li>
-                        </ol>
-                    </li>
-                    <li>If before, during or after registration you are found not having the minimum entry requirement
-                        prescribed for your course of study or that the qualifications
-                        you purport to possess are false or incorrect, you will be dismissed and may be
-                        liable to prosecution.</li>
-                    <li>Except on expectational circumstance, no change of course will be entertained from any student
-                        after registration</li>
-                    <li>In the absence of any response from you on or before
-                        ................................................ it will be assumed that the offer of admission
-                        has been rejected by you.</li>
-                    <li><span>All prospective students will be required to produce evidence of having paid all fees.
-                            (Schedule of fees attached). REFUND OF FEES PAID WILL NOT BE ENTERTAINED PLEASE!</span></li>
-
-                    <li>Students admitted into the polytechnic are expected to promote the best interest of the
-                        institution and abide by its rules and regulations.</li>
-                </ol>
-                <p><span>Please accept our congratulations.</span></p>
-                <footer>
-                    <div class="stamp-div">
-                        <div><img src="{{ asset('assets/img/logos/stamped.png') }}" alt="stamped-image"
-                                height="40px" />
-                        </div>
-                        <br>
-                        Official Stamp
-                    </div>
-                    <div class="sign-div">
-                        <img src="{{ asset('assets/img/logos/acad_sign.png') }}" alt="stamped-image" height="40px" />
-
-                        <br>For Registrar
-                    </div>
-                </footer>
-            </article>
-        </section>
-    </div>
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <div class="fees-header">
-    </div>
-    <h1>Schedule Fees</h1>
-    <hr>
-    @if ($scheduleFees)
+    </header>
+    <main>
         <table>
             <thead>
                 <tr>
-                    <th>Fee Name</th>
-                    <th>Amount (₦)</th>
+                    <th class="service">TRANSACTION ID</th>
+                    <th>Full Name</th>
+                    <th class="desc">DESCRIPTION</th>
+                    <th>RRR</th>
+                    <th>AMOUNT(N)</th>
+
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $totalFees = 0;
-                @endphp
-                @foreach ($scheduleFees as $feeName => $feeAmount)
-                    @php
-
-                        $feeName = preg_replace('/_/', ' ', strtoupper($feeName));
-                        $totalFees += $feeAmount;
-
-                    @endphp
-                    <tr>
-
-                        <td>{{ $feeName }}</td>
-                        <td>{{ number_format($feeAmount, 2, '.', ',') }}</td>
-                    </tr>
-                @endforeach
                 <tr>
-                    <td><strong>TOTAL</strong></td>
-                    <td><strong>{{ number_format($totalFees, 2, '.', ',') }}</strong></td>
+                    <td class="service">{{ $transactionId }}</td>
+                    <td class="desc">{{ $fullName }}</td>
+                    <td class="desc">{{ $resource }}</td>
+                    <td class="unit">{{ $rrr }}</td>
+                    <td class="qty">{{ $amount }}</td>
+
                 </tr>
+
+
+
             </tbody>
         </table>
-    @endif
+        <div id="notices">
+
+            <div align="center"> {!! QrCode::size(100)->generate($fullName . ' Remita: ' . $rrr . ' Amount: ' . $amount) !!}</div>
+
+        </div>
+    </main>
+    <footer>
+        <center>
+            <h1>&copy;CIT Wufpbk- {{ date('Y') }}</h1>
+        </center>
+    </footer>
 </body>
+
 <script>
     window.print();
 </script>
-
 </html>
