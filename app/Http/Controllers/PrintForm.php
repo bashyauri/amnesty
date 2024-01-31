@@ -25,7 +25,6 @@ class PrintForm extends Controller
 
         $applicationDetails = Application::where('account_id', '=', $user)->sole();
 
-        $program = Programme::where('id', '=', auth()->user()->programme_id)->first();
 
         $transaction = Transaction::where('account_id', '=', $user)
             ->where('resource', '=', config('Remita.AMNESTY_DESCRIPTION'))
@@ -36,9 +35,6 @@ class PrintForm extends Controller
             })->first();
 
 
-        $institutions = Institution::where('account_id', '=', $user)->get();
-        $exams = ExamDetail::where('account_id', '=', $user)->get();
-        $subjects = ExamGrade::where('account_id', '=', $user)->get();
 
 
         if ($applicationDetails) {
@@ -47,10 +43,21 @@ class PrintForm extends Controller
                 'fullName' => $applicationDetails->surname . ' ' . $applicationDetails->firstname . ' ' . $applicationDetails->m_name,
                 'serialNo' => $applicationDetails->sN,
                 'rrr' => $transaction->RRR,
+                'matric_no' => $applicationDetails->matric_no,
                 'transactionId' => $transaction->transactionId,
                 'resource' => $transaction->resource,
                 'amount' => $transaction->amount,
                 'accountId' => $applicationDetails->account_id,
+                'departmentName' => $applicationDetails->department->name,
+                'acad_session' => $applicationDetails->year_failed_exam,
+                'programName' => $applicationDetails->program->name,
+                'gender' => $applicationDetails->gender,
+                'coursesFailed' => $applicationDetails->no_of_course,
+                'yearFailed' => $applicationDetails->year_failed_exam,
+                'matricNo' => $applicationDetails->matric_no,
+                'cgpa' => $applicationDetails->cgpa,
+
+                'date' => $transaction->date,
 
 
             );
@@ -68,15 +75,6 @@ class PrintForm extends Controller
 
         $applicationDetails = Application::where('account_id', '=', $user)->sole();
 
-        $program = Programme::where('id', '=', auth()->user()->programme_id)->first();
-
-
-
-
-
-        $institutions = Institution::where('account_id', '=', $user)->get();
-        $exams = ExamDetail::where('account_id', '=', $user)->get();
-        $subjects = ExamGrade::where('account_id', '=', $user)->get();
         $transaction = Transaction::where('account_id', '=', $user)
             ->where('resource', '=', config('Remita.AMNESTY_ACCEPTANCE_DESCRIPTION'))
             ->where('use_status', '=', '(Not Used)')
